@@ -3,8 +3,10 @@ import React, { useState } from "react";
 import { datas } from "../data/data";
 
 function Clock() {
-  const [date, setDate] = useState(
-    moment().tz("Asia/Seoul").format("YYYY-MM-DD HH:mm:ss")
+  const [time, setTime] = useState(
+    datas.map((data) => {
+      return moment().tz(data.location).format("YYYY-MM-DD HH:mm:ss");
+    })
   );
 
   return (
@@ -12,7 +14,7 @@ function Clock() {
       {datas.map((data) => (
         <div key={data.id}>
           <h2>{data.name}</h2>
-          <p>{date}</p>
+          <p>{time[data.id]}</p>
         </div>
       ))}
     </div>
