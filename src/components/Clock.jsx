@@ -25,7 +25,7 @@ function Clock() {
           <div key={data.id}>
             <h2>{data.name}</h2>
             <p>{time[data.id]}</p>
-            <button onClick={() => clickBtnDelete(data)}>삭제</button>
+            <button onClick={() => clickBtnDelete(data)}>X</button>
           </div>
         ))}
     </div>
