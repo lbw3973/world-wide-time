@@ -1,5 +1,6 @@
 import moment from "moment-timezone";
 import React, { useState } from "react";
+import { useInterval } from "react-use";
 import { datas } from "../data/data";
 
 function Clock() {
@@ -8,17 +9,31 @@ function Clock() {
       return moment().tz(data.location).format("YYYY-MM-DD HH:mm:ss");
     })
   );
+  useInterval(() => {
+    setTime(
+      datas.map((data) => {
+        return moment().tz(data.location).format("YYYY-MM-DD HH:mm:ss");
+      })
+    );
+  }, 1000);
 
   return (
     <div className="clock">
-      {datas.map((data) => (
-        <div key={data.id}>
-          <h2>{data.name}</h2>
-          <p>{time[data.id]}</p>
-        </div>
-      ))}
+      {datas
+        .filter((data) => data.enabled === true)
+        .map((data) => (
+          <div key={data.id}>
+            <h2>{data.name}</h2>
+            <p>{time[data.id]}</p>
+            <button onClick={() => clickBtnDelete(data)}>삭제</button>
+          </div>
+        ))}
     </div>
   );
 }
+
+const clickBtnDelete = (data) => {
+  if (confirm("삭제 하시겠습니까?")) data.enabled = false;
+};
 
 export default Clock;
