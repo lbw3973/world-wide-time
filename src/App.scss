@@ -1,3 +1,6 @@
+body {
+  background-color: #d3d3d3;
+}
 .main {
   padding: 50px;
   .header {
@@ -8,28 +11,36 @@
       font-weight: bold;
       margin-bottom: 30px;
     }
-    button {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      right: 150px;
-    }
   }
   .clock {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 40px;
+    gap: 30px;
     div {
       display: grid;
-      grid-template-columns: 100px 200px 50px;
-      gap: 20px;
+      grid-template-columns: 100px 200px 30px;
       align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid #999;
       h2 {
         font-weight: bold;
         font-size: 20px;
       }
+      button {
+        padding: 5px 0;
+        border: none;
+        border-radius: 10px;
+        background-color: #ffe7ee;
+      }
+    }
+  }
+  .btnBox {
+    display: flex;
+    button {
+      margin: 20px auto;
+      font-size: 30px;
     }
   }
 }
